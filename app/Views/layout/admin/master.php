@@ -126,11 +126,11 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle text-dark" href="<?= base_url('/admin/guestbook') ?>">
+                            <a class="nav-link dropdown-toggle text-dark" href="<?= base_url('/admin/guestbooks') ?>">
                                 <i class="fas fa-envelope"></i>
                                 <!-- Counter - Messages -->
-                                <div class="ml-1">Guestbook</div>
-                                <span class="badge badge-danger badge-counter">7</span>
+                                <div class="ml-1">Guestbooks</div>
+                                <span class="badge badge-counter <?= $count == 0 ? 'badge-secondary' : 'badge-danger' ?>"><?= $count ?></span>
                             </a>
                         </li>
 

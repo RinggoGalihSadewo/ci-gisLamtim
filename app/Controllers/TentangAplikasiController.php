@@ -4,15 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Post;
+use App\Models\Guestbooks;
 
 class TentangAplikasiController extends BaseController
 {
 
-    protected $post;
+    protected $post, $guestbooks;
 
     public function __construct()
     {
         $this->post = new Post();
+        $this->guestbooks = new Guestbooks();
         helper(['form', 'url']);
     }
 
@@ -24,7 +26,8 @@ class TentangAplikasiController extends BaseController
         $data = [
             'title' => 'Tentang Aplikasi',
             'uri' => 'tentang-aplikasi',
-            'post' => $this->post->where('post_type', 'profil')->findAll()
+            'post' => $this->post->where('post_type', 'profil')->findAll(),
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 
         return view('admin/tentang-aplikasi', $data);
@@ -41,7 +44,8 @@ class TentangAplikasiController extends BaseController
         $data = [
             'title' => 'Add New Tentang Aplikasi',
             'uri' => 'tentang-aplikasi',
-            'today' => $today
+            'today' => $today,
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 
         return view('admin/tentang-aplikasi-add', $data);
@@ -78,7 +82,8 @@ class TentangAplikasiController extends BaseController
         $data = [
             'title' => 'Edit Tentang Aplikasi',
             'uri' => 'tentang-aplikasi',
-            'post' => $this->post->find($post_id)
+            'post' => $this->post->find($post_id),
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 
         return view('admin/tentang-aplikasi-edit', $data);

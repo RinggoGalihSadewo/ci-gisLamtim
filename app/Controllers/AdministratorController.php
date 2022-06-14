@@ -4,15 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Administrators;
+use App\Models\Guestbooks;
 
 class AdministratorController extends BaseController
 {
 
-    protected $administrator;
+    protected $administrator, $guestbooks;
 
     public function __construct()
     {
         $this->administrator = new Administrators();
+        $this->guestbooks = new Guestbooks();
         helper(['form', 'url']);
     }
 
@@ -22,7 +24,8 @@ class AdministratorController extends BaseController
         $data = [
             'title' => 'Administrator',
             'uri' => 'administrator',
-            'administrator' => $this->administrator->getAdministrators()
+            'administrator' => $this->administrator->getAdministrators(),
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 
         return view('admin/administrator', $data);
@@ -32,7 +35,8 @@ class AdministratorController extends BaseController
     {
         $data = [
             'title' => 'Add New Administrator',
-            'uri' => 'administrator'
+            'uri' => 'administrator',
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 
         return view('admin/administrator-add', $data);
@@ -63,7 +67,8 @@ class AdministratorController extends BaseController
         $data = [
             'title' => 'Edit Administrator',
             'uri' => 'administrator',
-            'administrator' => $this->administrator->find($admin_id)
+            'administrator' => $this->administrator->find($admin_id),
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 
         return view('admin/administrator-edit', $data);

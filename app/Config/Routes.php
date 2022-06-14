@@ -63,6 +63,10 @@ $routes->get('/admin/settings', 'SettingsController::index');
 
 $routes->get('/admin/popup-manager', 'PopupManagerController::index');
 
+$routes->get('/admin/guestbooks', 'GuestbooksController::index');
+$routes->get('/admin/guestbooks/read/(:num)', 'GuestbooksController::read/$1');
+$routes->get('/admin/guestbooks/delete/(:num)', 'GuestbooksController::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
