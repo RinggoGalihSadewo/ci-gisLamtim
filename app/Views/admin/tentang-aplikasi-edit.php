@@ -31,6 +31,7 @@
                 <a href="javascript:history.back()" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <?= csrf_field() ?>
+                    <?php $validation = \Config\Services::validation();  ?>
                     <input type="hidden" name="_method" value="PATCH" />
                     <button type="submit" href="<?= base_url('admin/tentang-aplikasi/add') ?>" class="btn btn-sm btn-success ml-2">Save <i class="fas fa-save"></i></button>
             </div>
@@ -39,7 +40,10 @@
             <div class="row">
                 <div class="col-8">
                     <label for="title">Title</label>
-                    <input type="text" id="title" class="form-control" name="title" value="<?= $post['title'] ?>">
+                    <input type="text" id="title" class="form-control <?= ($validation->hasError('title')) ? 'is-invalid' : '' ?>" name="title" value="<?= $post['title'] ?>">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('title') ?>
+                    </div>
                     <div class="mt-4">
                         <textarea id="summernote" name="content"><?= $post['content'] ?></textarea>
                     </div>

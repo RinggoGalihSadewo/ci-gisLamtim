@@ -16,6 +16,7 @@ class TentangAplikasiController extends BaseController
         $this->post = new Post();
         $this->guestbooks = new Guestbooks();
         helper(['form', 'url']);
+        session();
     }
 
     public function index()
@@ -54,6 +55,17 @@ class TentangAplikasiController extends BaseController
     public function save()
     {
 
+        if (!$this->validate([
+            'title' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Title wajib diisi !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('admin/tentang-aplikasi/add')->withInput();
+        }
+
         $slug = url_title($this->request->getVar('title'));
 
         $this->post->save([
@@ -79,6 +91,7 @@ class TentangAplikasiController extends BaseController
 
     public function edit($post_id)
     {
+
         $data = [
             'title' => 'Edit Tentang Aplikasi',
             'uri' => 'tentang-aplikasi',
@@ -91,6 +104,17 @@ class TentangAplikasiController extends BaseController
 
     public function editSave($post_id)
     {
+
+        if (!$this->validate([
+            'title' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Title wajib diisi !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('admin/tentang-aplikasi/edit/' . $post_id)->withInput();
+        }
 
         $slug = url_title($this->request->getVar('title'));
 

@@ -49,6 +49,41 @@ class AdministratorController extends BaseController
             return redirect()->to('/admin/administrator/add')->withInput();
         }
 
+        if (!$this->validate([
+            'nik' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'username' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'confirmPassword' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Confirm Password wajib diisi !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('admin/administrator/add')->withInput();
+        }
+
         $this->administrator->save([
             'nik' => $this->request->getVar('nik'),
             'nama' => $this->request->getVar('nama'),
@@ -76,6 +111,40 @@ class AdministratorController extends BaseController
 
     public function editSave($admin_id)
     {
+        if (!$this->validate([
+            'nik' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'username' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi !'
+                ]
+            ],
+            'confirmPassword' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Confirm Password wajib diisi !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('admin/administrator/edit/' . $admin_id)->withInput();
+        }
         if ($this->request->getVar('password') !== $this->request->getVar('confirmPassword')) {
             session()->setFlashdata('pesan', 'Password dan Confirm Password tidak sama !');
             return redirect()->to('/admin/administrator/edit/' . $admin_id);

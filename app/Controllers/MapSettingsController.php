@@ -23,6 +23,8 @@ class MapSettingsController extends BaseController
         $data = [
             'title' => 'Map Settings',
             'uri' => 'map-settings',
+            // 'post' => $this->post->where('post_type', 'map')->join('category', 'category.category_id = post.category_id')->findAll(),
+            'post' => $this->post->where('post_type', 'map')->findAll(),
             'count' => $this->guestbooks->where('status', 'unread')->countAllResults()
         ];
 

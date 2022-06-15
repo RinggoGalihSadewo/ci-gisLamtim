@@ -31,10 +31,11 @@
                 <a href="javascript:history.back();" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <?= csrf_field() ?>
+                    <?php $validation = \Config\Services::validation();  ?>
                     <button type="submit" href="<?= base_url('admin/administrator/add') ?>" class="btn btn-sm btn-success ml-2">Save <i class="fas fa-save"></i></button>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body pb-5">
             <?php if (session()->getFlashdata('pesan')) : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('pesan') ?>
@@ -46,37 +47,52 @@
             <div class="row">
                 <div class="col-4">
                     <label for="nik">NIK</label>
-                    <input type="text" class="form-control" id="nik" name="nik" value="<?= old('nik') ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= old('nik') ?>">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('nik') ?>
+                    </div>
                 </div>
                 <div class="col-4">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="<?= old('nama') ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : '' ?> " id="nama" name="nama" value="<?= old('nama') ?>">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('nama') ?>
+                    </div>
                 </div>
                 <div class="col-4">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="<?= old('username') ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" id="username" name="username" value="<?= old('username') ?>">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('username') ?>
+                    </div>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-4">
                     <label for="password">Password</label>
                     <div class="row d-flex align-items-center inputPassword">
-                        <div class="col-10">
-                            <input type="password" class="form-control password" id="password" name="password">
-                        </div>
-                        <div class="col-2" id="eyeOpen1">
-                            <i class="fas fa-eye"></i>
+                        <div class="col-12 d-flex align-items-center">
+                            <input type="password" class="form-control password <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" id="password" name="password">
+                            <div class="invalid-feedback" style="position: absolute; bottom: -1.5rem">
+                                <?= $validation->getError('password') ?>
+                            </div>
+                            <div class="ml-3" id="eyeOpen1">
+                                <i class="fas fa-eye"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <label for="confirmPassword">Confirm Password</label>
-                    <div class="row d-flex align-items-center inputPassword">
-                        <div class="col-10">
-                            <input type="password" class="form-control password" id="confirmPassword" name="confirmPassword">
-                        </div>
-                        <div class="col-2" id="eyeOpen2">
-                            <i class="fas fa-eye"></i>
+                    <div class="row d-flex align-items-center inputconfirmPassword">
+                        <div class="col-12 d-flex align-items-center">
+                            <input type="password" class="form-control password <?= ($validation->hasError('confirmPassword')) ? 'is-invalid' : '' ?>" id="confirmPassword" name="confirmPassword">
+                            <div class="invalid-feedback" style="position: absolute; bottom: -1.5rem">
+                                <?= $validation->getError('confirmPassword') ?>
+                            </div>
+                            <div class="ml-3" id="eyeOpen2">
+                                <i class="fas fa-eye"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

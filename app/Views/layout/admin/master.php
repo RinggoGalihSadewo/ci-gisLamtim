@@ -231,6 +231,19 @@
         });
     </script>
 
+    <script>
+        function previewImg() {
+            const photo = document.querySelector('#photo');
+            const imgPreview = document.querySelector('.img-preview');
+
+            const filePhoto = new FileReader();
+            filePhoto.readAsDataURL(photo.files[0]);
+
+            filePhoto.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 
 </body>
 
