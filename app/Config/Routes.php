@@ -73,7 +73,8 @@ $routes->patch('/admin/settings/edit/(:num)', 'SettingsController::saveEdit/$1')
 $routes->get('/admin/popup-manager', 'PopupManagerController::index');
 $routes->post('/admin/popup-manager/', 'PopupManagerController::save');
 $routes->get('/admin/popup-manager/delete/(:num)', 'PopupManagerController::delete/$1');
-$routes->get('/admin/popup-manager/edit/(:num)', 'PopupManagerController::editSave/$1');
+$routes->patch('/admin/popup-manager/edit/(:num)', 'PopupManagerController::saveEdit/$1');
+$routes->patch('admin/popup-manager/setActive', 'PopupManagerController::setActive');
 
 $routes->get('/admin/guestbooks', 'GuestbooksController::index');
 $routes->get('/admin/guestbooks/read/(:num)', 'GuestbooksController::read/$1');

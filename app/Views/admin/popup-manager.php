@@ -80,13 +80,22 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="alert alert-warning" role="alert">
-                                                        <b>Peringatan !</b> Anda yakin ingin menghapus data ini ?
-                                                    </div>
+                                                    <form action="<?= base_url('/admin/popup-manager/edit/' . $key['popup_id'])  ?> " method="POST" enctype="multipart/form-data">
+                                                        <?= csrf_field() ?>
+                                                        <div>
+                                                            <input type="hidden" name="_method" value="PATCH">
+                                                            <label for="title">Title</label>
+                                                            <input type="text" class="form-control" name="title" value="<?= $key['title'] ?>">
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label for="title">Gambar Pop Up</label>
+                                                            <input type="file" class="form-control" name="photo">
+                                                        </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="" class="btn btn-sm btn-danger" data-dismiss="modal">No <i class="fas fa-ban"></i></a>
-                                                    <a href="<?= base_url('/admin/popup-manager/edit/' . $key['popup_id']) ?>" class="btn btn-sm btn-success">Yes <i class="fas fa-check"></i></a>
+                                                    <button type="submit" class="btn btn-sm btn-success">Yes <i class="fas fa-check"></i></button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,20 +165,19 @@
                     <h6 class="m-0 font-weight-bold text-primary">Pop Up Active</h6>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        <?= csrf_field() ?>
-                        <input type="hidden" name="_method" value="PATCH">
-
-                        <?php foreach ($imgActive as $img) : ?>
-                            <input type="text" value="<?= $img['popup_id'] ?>">
+                    <?php foreach ($imgActive as $img) : ?>
+                        <form action="<?= base_url('admin/popup-manager/setActive') ?>" method="POST" enctype="multipart/form-data">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="_method" value="PATCH">
+                            <input type="hidden" id="id" value="<?= $img['popup_id'] ?>" name="id">
                             <img src="/img/admin/popup/<?= $img['value'] ?>" class="mt-3 img-preview" alt="" width="100%">
                         <?php endforeach; ?>
                         <input type="hidden" name="_method" value="PATCH">
                         <div class="mt-2">
                             <label for="desc">Pop Up Active</label>
-                            <select name="select" id="" class="form-control">
+                            <select name="select" id="select" class="form-control" onchange="change()">
                                 <?php foreach ($popup as $key) : ?>
-                                    <option value="active" <?= $key['status'] === 'active' ? 'selected' : '' ?>><?= $key['title'] ?></option>
+                                    <option value="<?= $key['popup_id'] ?>" <?= $key['status'] === 'active' ? 'selected' : '' ?>><?= $key['title'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -186,5 +194,13 @@
 
     </div>
     <!-- /.container-fluid -->
+
+    <script>
+        function change() {
+            var id = document.getElementById('id');
+            var select = document.getElementById('select').value;
+            id.value = select;
+        }
+    </script>
 
     <?= $this->endSection() ?>
