@@ -9,7 +9,7 @@ class Post extends Model
     protected $table            = 'post';
     protected $primaryKey       = 'post_id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['parent_id', 'category_id', 'post_type', 'date_create', 'date_publish', 'date_modify', 'author', 'slug', 'title', 'content', 'description', 'status', 'sort'];
+    protected $allowedFields    = ['parent_id', 'category_id', 'post_type', 'date_create', 'date_publish', 'date_modify', 'author', 'slug', 'title', 'content', 'description', 'status', 'others', 'sort'];
 
     // Dates
     protected $useTimestamps = true;

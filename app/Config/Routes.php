@@ -55,6 +55,8 @@ $routes->post('admin/map-settings/category/add', 'CategoryController::save');
 $routes->get('admin/map-settings/category/delete/(:num)', 'CategoryController::delete/$1');
 $routes->get('admin/map-settings/category/edit/(:num)', 'CategoryController::edit/$1');
 $routes->patch('admin/map-settings/category/edit/(:num)', 'CategoryController::editSave/$1');
+$routes->get('admin/map-settings/add', 'MapSettingsController::add');
+$routes->post('admin/map-settings/add', 'MapSettingsController::save');
 
 // Administrator
 $routes->get('/admin/administrator', 'AdministratorController::index');

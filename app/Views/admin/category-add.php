@@ -36,11 +36,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php
-
-                    use Kint\Zval\Value;
-
-                    if (session()->getFlashdata('pesan')) : ?>
+                    <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <?= session()->getFlashdata('pesan') ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
