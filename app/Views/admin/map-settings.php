@@ -72,7 +72,7 @@
                                 <td><?= $key['title'] ?></td>
                                 <td><?= $key['category'] ?></td>
                                 <td><?= $key['author'] ?></td>
-                                <td><?= date('d-m-y', strtotime($key['date_publish'])) ?></td>
+                                <td><?= date('l, d F Y', strtotime($key['date_publish'])) ?></td>
                                 <td><span class="badge <?= $key['status'] === 'publish' ? 'badge-success' : 'badge-secondary' ?>"><?= $key['status'] ?></span></td>
                             </tr>
                             <!-- Modal Delete -->

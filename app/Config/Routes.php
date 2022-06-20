@@ -47,6 +47,7 @@ $routes->post('/admin/tentang-aplikasi/add', 'TentangAplikasiController::save');
 $routes->get('/admin/tentang-aplikasi/edit/(:num)', 'TentangAplikasiController::edit/$1');
 $routes->patch('/admin/tentang-aplikasi/edit/(:num)', 'TentangAplikasiController::editSave/$1');
 
+// Map Settings
 $routes->get('/admin/map-settings', 'MapSettingsController::index');
 $routes->get('admin/map-settings/category', 'CategoryController::index');
 $routes->get('admin/map-settings/category', 'CategoryController::index');
@@ -57,6 +58,9 @@ $routes->get('admin/map-settings/category/edit/(:num)', 'CategoryController::edi
 $routes->patch('admin/map-settings/category/edit/(:num)', 'CategoryController::editSave/$1');
 $routes->get('admin/map-settings/add', 'MapSettingsController::add');
 $routes->post('admin/map-settings/add', 'MapSettingsController::save');
+$routes->get('admin/map-settings/edit/(:num)', 'MapSettingsController::edit/$1');
+$routes->patch('admin/map-settings/edit/(:num)', 'MapSettingsController::editSave/$1');
+$routes->get('admin/map-settings/delete/(:num)', 'MapSettingsController::delete/$1');
 
 // Administrator
 $routes->get('/admin/administrator', 'AdministratorController::index');

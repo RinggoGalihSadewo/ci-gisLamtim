@@ -63,7 +63,9 @@
                         <div class="col-6">
                             <label for="kec">Kecamatan</label>
                             <select name="kec" id="kec" class="form-control">
-                                <option value="test">test</option>
+                                <?php foreach ($kec as $key) : ?>
+                                    <option value="<?= $key->nama ?>"><?= $key->nama ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -140,37 +142,6 @@
         document.getElementById('lat').value = marker.getLatLng().lat;
         document.getElementById('lng').value = marker.getLatLng().lng;
     });
-
-
-    // var theMarker = {};
-
-    // function onMapClick(e) {
-    //     var lat = e.latlng.lat;
-    //     var lng = e.latlng.lng;
-    //     marker = new L.marker(e.latlng, {
-    //         draggable: 'true'
-    //     });
-
-    //     marker.on('dragend', function(event) {
-    //         var marker = event.target;
-    //         var position = marker.getLatLng();
-    //         marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-    //             draggable: 'true'
-    //         });
-    //         map.panTo(new L.LatLng(position.lat, position.lng))
-    //     });
-
-    //     if (theMarker != undefined) {
-    //         map.removeLayer(theMarker);
-    //     };
-
-    //     theMarker = L.marker([lat, lng]).addTo(map);
-
-    //     document.getElementById('lat').value = e.latlng.lat;
-    //     document.getElementById('lng').value = e.latlng.lng;
-    // };
-
-    // map.on('click', onMapClick)
 </script>
 
 <?= $this->endSection() ?>
