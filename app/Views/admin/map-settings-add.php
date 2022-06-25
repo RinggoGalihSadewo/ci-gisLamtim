@@ -60,12 +60,18 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-6">
+                        <!-- <div class="col-6">
                             <label for="kec">Kecamatan</label>
                             <select name="kec" id="kec" class="form-control">
                                 <?php foreach ($kec as $key) : ?>
                                     <option value="<?= $key->nama ?>"><?= $key->nama ?></option>
                                 <?php endforeach; ?>
+                            </select>
+                        </div> -->
+                        <div class="col-6">
+                            <label for="kec">Kecamatan</label>
+                            <select name="kec" id="kec" class="form-control">
+                                <option value=""></option>
                             </select>
                         </div>
                     </div>
@@ -142,6 +148,21 @@
         document.getElementById('lat').value = marker.getLatLng().lat;
         document.getElementById('lng').value = marker.getLatLng().lng;
     });
+</script>
+
+<script>
+    fetch('https://ibnux.github.io/data-indonesia/kecamatan/1807.json')
+        .then((res) => res.json())
+        .then((json) => {
+
+            var kec = json;
+            var selectKec = document.getElementById('kec');
+
+            for (var i = 0; i < kec.length; i++) {
+                selectKec.append('<option value="' + kec[i].nama + '">' + kec[i].nama + '</option');
+                console.log(kec[i].nama);
+            }
+        });
 </script>
 
 <?= $this->endSection() ?>

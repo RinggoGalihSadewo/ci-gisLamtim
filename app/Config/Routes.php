@@ -70,18 +70,26 @@ $routes->get('/admin/administrator/edit/(:num)', 'AdministratorController::edit/
 $routes->patch('/admin/administrator/edit/(:num)', 'AdministratorController::editSave/$1');
 $routes->get('/admin/administrator/delete/(:num)', 'AdministratorController::delete/$1');
 
+// Menu Manager
 $routes->get('/admin/menu-manager', 'MenuManagerController::index');
+$routes->post('/admin/menu-manager', 'MenuManagerController::save');
+$routes->patch('/admin/menu-manager', 'MenuManagerController::sort');
+$routes->get('/admin/menu-manager/edit/(:num)', 'MenuManagerController::edit/$1');
+$routes->patch('/admin/menu-manager/edit/(:num)', 'MenuManagerController::editSave/$1');
+$routes->get('/admin/menu-manager/delete/(:num)', 'MenuManagerController::delete/$1');
 
 // Settings
 $routes->get('/admin/settings', 'SettingsController::index');
 $routes->patch('/admin/settings/edit/(:num)', 'SettingsController::saveEdit/$1');
 
+// Popup Manager
 $routes->get('/admin/popup-manager', 'PopupManagerController::index');
 $routes->post('/admin/popup-manager/', 'PopupManagerController::save');
 $routes->get('/admin/popup-manager/delete/(:num)', 'PopupManagerController::delete/$1');
 $routes->patch('/admin/popup-manager/edit/(:num)', 'PopupManagerController::saveEdit/$1');
 $routes->patch('admin/popup-manager/setActive', 'PopupManagerController::setActive');
 
+// Guestbooks
 $routes->get('/admin/guestbooks', 'GuestbooksController::index');
 $routes->get('/admin/guestbooks/read/(:num)', 'GuestbooksController::read/$1');
 $routes->get('/admin/guestbooks/delete/(:num)', 'GuestbooksController::delete/$1');

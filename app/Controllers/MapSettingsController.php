@@ -150,6 +150,7 @@ class MapSettingsController extends BaseController
 
         $photo = $this->request->getFile('cover');
         $cekPhoto = $this->post->find($post_id);
+
         if ($photo == '') {
             $namaPhoto = $cekPhoto['image'];
         } else {

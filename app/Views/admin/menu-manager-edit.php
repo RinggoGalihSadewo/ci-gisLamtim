@@ -38,7 +38,7 @@
                     <?php endif ?>
                     <div class="dd w-100" id="nestable">
                         <ol class="dd-list">
-                            <?php foreach ($menu as $key) : ?>
+                            <?php foreach ($menus as $key) : ?>
                                 <li class="dd-item d-flex align-items-center" data-id="<?= $key['menu_id']; ?>">
                                     <div class="dd-handle dd3-handle mt-1"></div>
                                     <div class="dd3-content w-100"><?= $key['title']; ?>
@@ -50,46 +50,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <!-- Modal Edit -->
-                                <!-- <div class="modal fade" id="edit-<?= $key['menu_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Item Confirm</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="<?= base_url('admin/menu-manager/edit/' . $key['menu_id']) ?>" method="PATCH">
-                                                    <input type="hidden" name="_method" value="PATCH">
-                                                    <div class="mb-3">
-                                                        <label for="title">Title</label>
-                                                        <input type="text" class="form-control" name="title" id="title" value="<?= $key['title'] ?>">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="url">Url</label>
-                                                        <input type="text" class="form-control" name="url" id="url" value="<?= $key['url'] ?>">
-                                                    </div>
-
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault3" value="_self" <?= $key['target'] === '_self' ? 'checked' : '' ?> />
-                                                        <label class="custom-control-label pt-1" for="flexRadioDefault3"> Self </label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault4" value="_blank" <?= $key['target'] === '_blank' ? 'checked' : '' ?> />
-                                                        <label class="custom-control-label pt-1" for="flexRadioDefault4"> Blank </label>
-                                                    </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="" class="btn btn-sm btn-danger" data-dismiss="modal">No <i class="fas fa-ban"></i></a>
-                                                <button class="btn btn-sm btn-success">Yes <i class="fas fa-check"></i></button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <!-- Modal Delete -->
                                 <div class="modal fade" id="delete-<?= $key['menu_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -128,30 +88,29 @@
         <div class="col-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Menu Add</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Menu Edit</h6>
                 </div>
                 <div class="card-body">
                     <form action="" method="POST">
                         <?= csrf_field() ?>
+                        <input type="hidden" name="_method" value="PATCH">
                         <div class="mb-3">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title">
+                            <input type="text" class="form-control" name="title" id="title" value="<?= $menu['title'] ?>">
                         </div>
 
                         <div class="mb-3">
                             <label for="url">Url</label>
-                            <input type="text" class="form-control" name="url" id="url">
+                            <input type="text" class="form-control" name="url" id="url" value="<?= $menu['url'] ?>">
                         </div>
 
-                        <div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault1" value="_self" />
-                                <label class="custom-control-label" for="flexRadioDefault1"> Self </label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault2" value="_blank" />
-                                <label class="custom-control-label" for="flexRadioDefault2"> Blank </label>
-                            </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault3" value="_self" <?= $menu['target'] === '_self' ? 'checked' : '' ?> />
+                            <label class="custom-control-label pt-1" for="flexRadioDefault3"> Self </label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault4" value="_blank" <?= $menu['target'] === '_blank' ? 'checked' : '' ?> />
+                            <label class="custom-control-label pt-1" for="flexRadioDefault4"> Blank </label>
                         </div>
                 </div>
                 <div class="card-footer">
