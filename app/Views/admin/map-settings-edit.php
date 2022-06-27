@@ -36,6 +36,9 @@
                     <button type="submit" class="btn btn-sm btn-success ml-2">Save <i class="fas fa-save"></i></button>
             </div>
         </div>
+        <div class="card-header py-3">
+            <a href="<?= base_url('admin/map-settings/edit/' . $post['post_id']) . '/galeri-foto' ?>" class="btn btn-sm btn-secondary">Galeri Foto</a>
+        </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-8">

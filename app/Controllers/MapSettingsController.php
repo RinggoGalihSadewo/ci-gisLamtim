@@ -188,6 +188,71 @@ class MapSettingsController extends BaseController
         return redirect()->to('admin/map-settings');
     }
 
+    public function galeri($post_id)
+    {
+
+        $data = [
+            'title' => 'Galeri Map Settings',
+            'uri' => 'map-settings',
+            'post' => $this->post->find($post_id),
+            'galeri' => $this->post->where('parent_id', $post_id)->findAll(),
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults(),
+        ];
+
+        return view('admin/map-settings-galeri', $data);
+    }
+
+    public function uploadGaleri($post_id)
+    {
+        $data = [
+            'title' => 'Upload Galeri Map Settings',
+            'uri' => 'map-settings',
+            'post' => $this->post->find($post_id),
+            'galeri' => $this->post->where('parent_id', $post_id)->findAll(),
+            'count' => $this->guestbooks->where('status', 'unread')->countAllResults(),
+        ];
+
+        return view('admin/map-settings-galeri-upload', $data);
+    }
+
+    public function saveGaleri($post_id)
+    {
+        $image = $this->request->getFile('file');
+
+        $imageName = $image->getRandomName();
+
+        $image->move('img/admin/map/galeri/', $imageName);
+
+        $data = [
+            'parent_id' => $post_id,
+            'post_type' => 'galeri',
+            'image' => $imageName,
+            'sort' => 1
+        ];
+
+        $this->post->save($data);
+
+        return json_encode(array(
+            'status' => 1,
+            'image' => $imageName
+        ));
+
+        session()->setFlashdata('pesan', 'Berhasil mengupload galeri !');
+        return redirect()->back();
+    }
+
+    public function deleteGaleri($post_id)
+    {
+
+        $galeri = $this->post->find($post_id);
+
+        $this->post->delete($post_id);
+        unlink('img/admin/map/galeri/' . $galeri['image']);
+
+        session()->setFlashdata('pesan', 'Galeri berhasil dihapus ');
+        return redirect()->back();
+    }
+
     public function delete($post_id)
     {
         $data = $this->post->find($post_id);
