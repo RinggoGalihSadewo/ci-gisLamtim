@@ -53,7 +53,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Pengunjung Hari Ini</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">14</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $hariVisitor ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-globe-americas fa-2x"></i>
@@ -71,7 +71,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Pengunjung Minggu Ini</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">90</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $mingguVisitor ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user fa-2x"></i>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $bulanVisitor ?></div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Total Pengunjung</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">250</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalVisitor ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-chart-bar fa-2x"></i>
