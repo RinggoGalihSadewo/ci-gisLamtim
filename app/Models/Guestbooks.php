@@ -10,7 +10,7 @@ class Guestbooks extends Model
     protected $table            = 'guestbooks';
     protected $primaryKey       = 'guestbook_id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['name', 'email', 'phone', 'title', 'message', 'status'];
+    protected $allowedFields    = ['name', 'email', 'phone', 'title', 'messages', 'status'];
 
     // Dates
     protected $dateFormat    = 'datetime';

@@ -70,7 +70,7 @@ class MapSettingsController extends BaseController
             'title' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Title wajib diisi !'
+                    'required' => 'Title wa jib diisi !'
                 ]
             ]
         ])) {
@@ -79,6 +79,11 @@ class MapSettingsController extends BaseController
 
         $except = ['csrf_test_name', 'title', 'status', 'category', 'date', 'kec', 'status'];
         $data = $this->request->getVar();
+
+        if ($this->request->getVar('youtube') == "") {
+            $data['youtube'] = 'https://www.youtube.com/embed/carMolhdSq0';
+        }
+
         $image = $this->request->getFile('cover');
         $cover = $image->getRandomName();
 
@@ -109,7 +114,7 @@ class MapSettingsController extends BaseController
             'sort' => 1
         ]);
 
-        session()->setFlashdata('pesan', 'Map berhasil ditambhkan !');
+        session()->setFlashdata('pesan', 'Map berhasil ditambahkan !');
         return redirect()->to('admin/map-settings');
     }
 

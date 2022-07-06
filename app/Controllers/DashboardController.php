@@ -19,7 +19,7 @@ class DashboardController extends BaseController
 
     public function index()
     {
-        $total = $this->visitor->countALL();
+        $total = $this->visitor->countAll();
         $bulan = $this->visitor->where('YEAR(date_time)', date('Y'))->where('MONTH(date_time)', date('m'))->countAllResults();
         $minggu = $this->visitor->where('YEARWEEK(`date_time`,1) = YEARWEEK(CURDATE(),1)')->countAllResults();
         $hari = $this->visitor->where('YEAR(date_time)', date('Y'))->where('MONTH(date_time)', date('m'))->where('DAY(date_time)', date('d'))->countAllResults();

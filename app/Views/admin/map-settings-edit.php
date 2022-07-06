@@ -78,16 +78,16 @@
                     <div class="row mt-3">
                         <div class="col-6">
                             <label for="lat">Latitude</label>
-                            <input type="text" class="form-control" id="lat" name="lat" value="<?= $others->lat ?>">
+                            <input type="text" class="form-control" id="lat" name="latitude" value="<?= $others->latitude ?>">
                         </div>
                         <div class="col-6">
                             <label for="lng">Longitude</label>
-                            <input type="text" class="form-control" id="lng" name="lng" value="<?= $others->lng ?>">
+                            <input type="text" class="form-control" id="lng" name="longitude" value="<?= $others->longitude ?>">
                         </div>
                     </div>
                     <div class="mt-4">
                         <label for="summornote">Deskripsi</label>
-                        <textarea id="summernote" name="desc"><?= $others->desc ?></textarea>
+                        <textarea id="summernote" name="description"><?= $others->desc ?></textarea>
                     </div>
                 </div>
                 <div class="col-4">
@@ -111,7 +111,7 @@
                     </div>
                     <div class="mt-2">
                         <label for="yt">Video Link Youtube</label>
-                        <input type="text" class="form-control" name="yt" id="yt" value="<?= $others->yt ?>" />
+                        <input type="text" class="form-control" name="youtube" id="yt" value="<?= $others->yt ?>" />
                     </div>
                     <div class="mt-2">
                         <label for="address">Address</label>
@@ -127,8 +127,8 @@
 <!-- /.container-fluid -->
 
 <script>
-    var lat = <?= $others->lat ?>;
-    var lng = <?= $others->lng ?>;
+    var lat = <?= $others->latitude ?>;
+    var lng = <?= $others->longitude ?>;
 
     var map = L.map('map').setView([lat, lng], 13);
 

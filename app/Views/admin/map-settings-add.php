@@ -60,18 +60,13 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <!-- <div class="col-6">
-                            <label for="kec">Kecamatan</label>
-                            <select name="kec" id="kec" class="form-control">
-                                <?php foreach ($kec as $key) : ?>
-                                    <option value="<?= $key->nama ?>"><?= $key->nama ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div> -->
                         <div class="col-6">
                             <label for="kec">Kecamatan</label>
                             <select name="kec" id="kec" class="form-control">
-                                <option value=""></option>
+                                <!-- <option value=""></option> -->
+                                <?php foreach ($kec as $key) : ?>
+                                    <option value="<?= $key->nama ?>"><?= $key->nama ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -80,16 +75,16 @@
                     <div class="row mt-3">
                         <div class="col-6">
                             <label for="lat">Latitude</label>
-                            <input type="text" class="form-control" id="lat" name="lat">
+                            <input type="text" class="form-control" id="lat" name="latitude">
                         </div>
                         <div class="col-6">
                             <label for="lng">Longitude</label>
-                            <input type="text" class="form-control" id="lng" name="lng">
+                            <input type="text" class="form-control" id="lng" name="longitude">
                         </div>
                     </div>
                     <div class="mt-4">
                         <label for="summornote">Deskripsi</label>
-                        <textarea id="summernote" name="desc"><?= old('content') ?></textarea>
+                        <textarea id="summernote" name="description"><?= old('content') ?></textarea>
                     </div>
                 </div>
                 <div class="col-4">
@@ -113,7 +108,7 @@
                     </div>
                     <div class="mt-2">
                         <label for="yt">Video Link Youtube</label>
-                        <input type="text" class="form-control" name="yt" id="yt" />
+                        <input type="text" class="form-control" name="youtube" id="yt" />
                     </div>
                     <div class="mt-2">
                         <label for="address">Address</label>
@@ -150,7 +145,7 @@
     });
 </script>
 
-<script>
+<!-- <script>
     fetch('https://ibnux.github.io/data-indonesia/kecamatan/1807.json')
         .then((res) => res.json())
         .then((json) => {
@@ -163,6 +158,6 @@
                 console.log(kec[i].nama);
             }
         });
-</script>
+</script> -->
 
 <?= $this->endSection() ?>

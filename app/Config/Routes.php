@@ -98,6 +98,17 @@ $routes->get('/admin/guestbooks', 'GuestbooksController::index');
 $routes->get('/admin/guestbooks/read/(:num)', 'GuestbooksController::read/$1');
 $routes->get('/admin/guestbooks/delete/(:num)', 'GuestbooksController::delete/$1');
 
+// User
+
+// Home
+$routes->get('/', 'UserController::index');
+$routes->get('/tentang-aplikasi', 'UserController::tentangAplikasi');
+$routes->get('/kontak-kami', 'UserController::kontakKami');
+$routes->post('/kontak-kami', 'UserController::kontakKamiSave');
+$routes->get('/peta', 'UserController::peta');
+$routes->get('/peta/(:any)', 'UserController::detailPeta/$1');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

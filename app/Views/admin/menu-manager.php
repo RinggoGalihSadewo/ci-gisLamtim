@@ -50,46 +50,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <!-- Modal Edit -->
-                                <!-- <div class="modal fade" id="edit-<?= $key['menu_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Item Confirm</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="<?= base_url('admin/menu-manager/edit/' . $key['menu_id']) ?>" method="PATCH">
-                                                    <input type="hidden" name="_method" value="PATCH">
-                                                    <div class="mb-3">
-                                                        <label for="title">Title</label>
-                                                        <input type="text" class="form-control" name="title" id="title" value="<?= $key['title'] ?>">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="url">Url</label>
-                                                        <input type="text" class="form-control" name="url" id="url" value="<?= $key['url'] ?>">
-                                                    </div>
-
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault3" value="_self" <?= $key['target'] === '_self' ? 'checked' : '' ?> />
-                                                        <label class="custom-control-label pt-1" for="flexRadioDefault3"> Self </label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input class="custom-control-input" type="radio" name="target" id="flexRadioDefault4" value="_blank" <?= $key['target'] === '_blank' ? 'checked' : '' ?> />
-                                                        <label class="custom-control-label pt-1" for="flexRadioDefault4"> Blank </label>
-                                                    </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="" class="btn btn-sm btn-danger" data-dismiss="modal">No <i class="fas fa-ban"></i></a>
-                                                <button class="btn btn-sm btn-success">Yes <i class="fas fa-check"></i></button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <!-- Modal Delete -->
                                 <div class="modal fade" id="delete-<?= $key['menu_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">

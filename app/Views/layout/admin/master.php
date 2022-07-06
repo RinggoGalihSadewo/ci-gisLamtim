@@ -131,7 +131,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <h3 class="text-dark">Peta Potensi Daerah Lampung Timur</h3>
+                    <!-- <h3 class="text-dark">Peta Potensi Daerah Lampung Timur</h3> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
